@@ -1,0 +1,201 @@
+# yaml-language-server: $schema=https://unpkg.com/@sveltia/cms/schema/sveltia-cms.json
+
+backend:
+  name: github
+  repo: haitebodesu/tebo.games
+  branch: master
+  auth_methods:
+    - token
+
+media_folder: once-human/images
+public_folder: /once-human/images
+
+collections:
+  - name: builds_file
+    label: Curated Builds
+    files:
+      - file: once-human/data/builds.json
+        name: builds
+        label: Builds List
+        format: json
+        fields:
+          - name: builds
+            label: Builds
+            label_singular: Build
+            widget: list
+            root: true
+            summary: "{{title}} ({{objective}})"
+            fields:
+              - { name: id, label: Build ID, widget: string }
+              - { name: title, label: Build Name, widget: string }
+              - { name: objective, label: Objective, widget: select, options: ["Visional", "Monoliths", "Silos", "General"] }
+              - { name: vision, label: Vision, widget: select, options: ["Non-Visional", "Lunar Oracle (outdated)", "Starfall Inversion (outdated)", "Lunar Revelry", "Aberrant Progeny", "Gravity Abyss", "Unreleased sound theme"], required: false }
+              - { name: scenario, label: Scenario, widget: select, options: ["Novice", "Manibus", "Way of Winter", "Endless Dream", "Isles of Abyss (unreleased)"], required: false }
+              - { name: primary_weapon, label: Primary Weapon, widget: relation, collection: weapons_file, file: weapons, value_field: "weapons.*.id", display_fields: ["weapons.*.name"] }
+              - { name: primary_mod, label: Primary Weapon Mod, widget: relation, collection: mods_file, file: mods, value_field: "mods.*.id", display_fields: ["mods.*.name"], required: false }
+              - { name: primary_calibration, label: Primary Calibration, widget: relation, collection: calibrations_file, file: calibrations, value_field: "calibrations.*.id", display_fields: ["calibrations.*.name"], required: false }
+              - { name: secondary_weapon, label: Secondary Weapon, widget: relation, collection: weapons_file, file: weapons, value_field: "weapons.*.id", display_fields: ["weapons.*.name"], required: false }
+              - { name: secondary_mod, label: Secondary Weapon Mod, widget: relation, collection: mods_file, file: mods, value_field: "mods.*.id", display_fields: ["mods.*.name"], required: false }
+              - { name: secondary_calibration, label: Secondary Calibration, widget: relation, collection: calibrations_file, file: calibrations, value_field: "calibrations.*.id", display_fields: ["calibrations.*.name"], required: false }
+              - { name: melee_weapon, label: Melee Weapon, widget: relation, collection: weapons_file, file: weapons, value_field: "weapons.*.id", display_fields: ["weapons.*.name"], required: false }
+              - { name: armor_summary, label: Armor Set Summary, widget: string, required: false }
+              - { name: helmet_mod, label: Helmet Mod, widget: relation, collection: mods_file, file: mods, value_field: "mods.*.id", display_fields: ["mods.*.name"], required: false }
+              - { name: mask_mod, label: Mask Mod, widget: relation, collection: mods_file, file: mods, value_field: "mods.*.id", display_fields: ["mods.*.name"], required: false }
+              - { name: top_mod, label: Top Mod, widget: relation, collection: mods_file, file: mods, value_field: "mods.*.id", display_fields: ["mods.*.name"], required: false }
+              - { name: bottoms_mod, label: Bottoms Mod, widget: relation, collection: mods_file, file: mods, value_field: "mods.*.id", display_fields: ["mods.*.name"], required: false }
+              - { name: gloves_mod, label: Gloves Mod, widget: relation, collection: mods_file, file: mods, value_field: "mods.*.id", display_fields: ["mods.*.name"], required: false }
+              - { name: shoes_mod, label: Shoes Mod, widget: relation, collection: mods_file, file: mods, value_field: "mods.*.id", display_fields: ["mods.*.name"], required: false }
+              - { name: cradle_overrides, label: Cradle Overrides, widget: list }
+              - { name: deviation, label: Primary Deviation, widget: relation, collection: deviations_file, file: deviations, value_field: "deviations.*.id", display_fields: ["deviations.*.name"], required: false }
+              - { name: deviation_alts, label: Deviation Alternates, widget: string, required: false }
+              - { name: hide_crafting, label: Hide Crafting Notes, widget: string, required: false }
+              - { name: notes, label: Usage Notes, widget: text, required: false }
+
+  - name: weapons_file
+    label: Weapons
+    files:
+      - file: once-human/data/weapons.json
+        name: weapons
+        label: Weapons List
+        format: json
+        fields:
+          - name: weapons
+            label: Weapons
+            label_singular: Weapon
+            widget: list
+            root: true
+            summary: "{{name}}"
+            fields:
+              - { name: id, label: ID, widget: string }
+              - { name: name, label: Name, widget: string }
+              - { name: item_category, label: Item Category, widget: string, default: "Weapon" }
+              - { name: item_type, label: Item Type, widget: select, options: ["Sniper Rifle", "Assault Rifle", "LMG", "Pistol", "SMG", "Shotgun", "Crossbow / Bow", "Melee", "Heavy"] }
+              - { name: item_quality, label: Quality, widget: number, value_type: int, min: 1, max: 6, hint: "1 White, 2 Green, 3 Blue, 4 Purple, 5 Yellow, 6 Red" }
+              - { name: description, label: Description, widget: text, required: false }
+              - { name: weight, label: Weight, widget: number, value_type: float, required: false }
+              - { name: attack, label: DMG, widget: number, value_type: int, required: false }
+              - { name: fire_rate, label: Fire Rate, widget: number, value_type: int, required: false }
+              - { name: magazine, label: MAG, widget: number, value_type: int, required: false }
+              - { name: crit_rate, label: Crit Rate, widget: number, value_type: float, required: false, hint: "0.05 = 5%" }
+              - { name: crit_dmg, label: Crit DMG, widget: number, value_type: float, required: false, hint: "0.40 = 40%" }
+              - { name: weakspot_dmg, label: Weakspot DMG, widget: number, value_type: float, required: false, hint: "0.50 = 50%" }
+              - { name: effective_range, label: Effective Range, widget: number, value_type: float, required: false }
+              - { name: min_dmg_distance, label: Min DMG Distance, widget: number, value_type: float, required: false }
+              - { name: min_dmg_multiplier, label: Min DMG Multiplier, widget: number, value_type: float, required: false }
+              - { name: reload_time, label: Reload Time, widget: number, value_type: float, required: false }
+              - { name: keyword_id, label: Keyword, widget: relation, collection: keywords_file, file: keywords, value_field: "keywords.*.id", display_fields: ["keywords.*.name"], required: false }
+              - { name: features, label: Weapon features, widget: list, hint: "Lines unique to this weapon" }
+
+  - name: armor_file
+    label: Armor
+    files:
+      - file: once-human/data/armor.json
+        name: armor
+        label: Armor List
+        format: json
+        fields:
+          - name: armor
+            label: Armor
+            label_singular: Armor Piece
+            widget: list
+            root: true
+            summary: "{{name}}"
+            fields:
+              - { name: id, label: ID, widget: string }
+              - { name: name, label: Name, widget: string }
+              - { name: item_category, label: Item Category, widget: string, default: "Armor" }
+              - { name: item_type, label: Item Type, widget: string }
+              - { name: item_quality, label: Quality, widget: number, value_type: int, min: 1, max: 6 }
+              - { name: description, label: Description, widget: text, required: false }
+              - { name: weight, label: Weight, widget: number, value_type: float, required: false }
+              - { name: set_bonus, label: Set Bonus, widget: text, required: false }
+
+  - name: mods_file
+    label: Mods
+    files:
+      - file: once-human/data/mods.json
+        name: mods
+        label: Mods List
+        format: json
+        fields:
+          - name: mods
+            label: Mods
+            label_singular: Mod
+            widget: list
+            root: true
+            summary: "{{name}}"
+            fields:
+              - { name: id, label: ID, widget: string }
+              - { name: name, label: Name, widget: string }
+              - { name: item_category, label: Item Category, widget: string, default: "Mod" }
+              - { name: item_type, label: Slot, widget: select, options: ["Weapon", "Helmet", "Top", "Bottoms", "Shoes", "Gloves", "Mask"] }
+              - { name: item_quality, label: Quality, widget: number, value_type: int, min: 1, max: 6, required: false }
+              - { name: description, label: Description, widget: text, required: false }
+              - { name: weight, label: Weight, widget: number, value_type: float, required: false }
+              - { name: keyword, label: Keyword, widget: select, options: ["Burn", "Power Surge", "Frost Vortex", "The Bull's Eye", "Fortress Warfare", "Unstable Bomber", "Fast Gunner", "Bounce", "Shrapnel"], required: false, hint: "Weapon mods only" }
+              - { name: recommended_suffix, label: Recommended Suffix, widget: string, required: false }
+
+  - name: calibrations_file
+    label: Calibrations
+    files:
+      - file: once-human/data/calibrations.json
+        name: calibrations
+        label: Calibrations List
+        format: json
+        fields:
+          - name: calibrations
+            label: Calibrations
+            label_singular: Calibration
+            widget: list
+            root: true
+            summary: "{{name}}"
+            fields:
+              - { name: id, label: ID, widget: string }
+              - { name: name, label: Name, widget: string }
+              - { name: item_category, label: Item Category, widget: string, default: "Calibration" }
+              - { name: item_type, label: Item Type, widget: string, required: false }
+              - { name: item_quality, label: Quality, widget: number, value_type: int, min: 1, max: 6, required: false }
+              - { name: description, label: Description, widget: text, required: false }
+              - { name: weight, label: Weight, widget: number, value_type: float, required: false }
+              - { name: compatible_weapon_types, label: Compatible Weapon Types, widget: list }
+              - { name: effect_name, label: Effect Name, widget: string }
+              - { name: effect_description, label: Effect Description, widget: text }
+              - { name: weapon_dmg_range, label: Weapon DMG Range, widget: string, hint: "e.g. 34%-50%" }
+              - { name: secondary_stat_pool, label: Secondary Stat Pool, widget: select, multiple: true, options: ["Elemental DMG", "Crit Rate", "Crit DMG", "Weakspot DMG"] }
+
+  - name: keywords_file
+    label: Keywords
+    files:
+      - file: once-human/data/keywords.json
+        name: keywords
+        label: Keyword List
+        format: json
+        fields:
+          - name: keywords
+            label: Keywords
+            label_singular: Keyword
+            widget: list
+            root: true
+            fields:
+              - { name: id, label: Keyword ID, widget: string }
+              - { name: name, label: Keyword, widget: string }
+              - { name: description, label: Shared description, widget: text }
+
+  - name: deviations_file
+    label: Deviations
+    files:
+      - file: once-human/data/deviations.json
+        name: deviations
+        label: Combat Deviations
+        format: json
+        fields:
+          - name: deviations
+            label: Deviations
+            widget: list
+            root: true
+            fields:
+              - { name: id, label: Deviation ID, widget: string }
+              - { name: name, label: Deviation Name, widget: string }
+              - { name: combat_type, label: Combat Archetype, widget: string }
+              - { name: signature_skill, label: Signature Skill, widget: text }
+              - { name: recommended_traits, label: Recommended Traits, widget: string }

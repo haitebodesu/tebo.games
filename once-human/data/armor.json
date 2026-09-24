@@ -1,0 +1,42 @@
+[
+  {
+    "id": "savior-set",
+    "name": "Savior Set",
+    "item_category": "Armor",
+    "item_type": "Set (3pc)",
+    "item_quality": 5,
+    "description": "2pc: +15% Max HP, +10% Pollution Resistance. 3pc: Shield on weapon skill activation and reduced incoming status damage.",
+    "weight": null,
+    "set_bonus": "2pc: +15% Max HP, +10% Pollution Resistance. 3pc: Shield on weapon skill activation and reduced incoming status damage."
+  },
+  {
+    "id": "lone-wolf-set",
+    "name": "Lone Wolf Set",
+    "item_category": "Armor",
+    "item_type": "Set (2pc)",
+    "item_quality": 5,
+    "description": "2pc: +10% Magazine capacity and +8% Weapon DMG. 4pc: Scaling Crit DMG per bullet hit.",
+    "weight": null,
+    "set_bonus": "2pc: +10% Magazine capacity and +8% Weapon DMG. 4pc: Scaling Crit DMG per bullet hit."
+  },
+  {
+    "id": "snowdrift-top",
+    "name": "Snowdrift Top",
+    "item_category": "Armor",
+    "item_type": "Top",
+    "item_quality": 5,
+    "description": "Frost Vortex duration increased by 30% and area damage tick rate improved.",
+    "weight": null,
+    "set_bonus": "Frost Vortex duration increased by 30% and area damage tick rate improved."
+  },
+  {
+    "id": "sharp-blade-pants",
+    "name": "Sharp-Blade Pants",
+    "item_category": "Armor",
+    "item_type": "Bottoms",
+    "item_quality": 5,
+    "description": "Grants +15% Bounce damage and critical chance on marked targets.",
+    "weight": null,
+    "set_bonus": "Grants +15% Bounce damage and critical chance on marked targets."
+  }
+]

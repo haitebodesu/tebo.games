@@ -1,0 +1,112 @@
+[
+  {
+    "id": "cryo-catalyst",
+    "name": "Cryo Catalyst",
+    "item_category": "Mod",
+    "item_type": "Weapon",
+    "item_quality": null,
+    "description": "Extends Frost Vortex radius and increases periodic damage based on Psi power.",
+    "weight": null,
+    "keyword": "Frost Vortex",
+    "recommended_suffix": "<Frost Vortex> or <Deviant Energy>"
+  },
+  {
+    "id": "vulnerability-amplifier",
+    "name": "Vulnerability Amplifier",
+    "item_category": "Mod",
+    "item_type": "Weapon",
+    "item_quality": null,
+    "description": "Increases Bull's Eye mark vulnerability debuff from 8% to 16% bonus damage from all sources.",
+    "weight": null,
+    "keyword": "The Bull's Eye",
+    "recommended_suffix": "<The Bull's Eye> or <General>"
+  },
+  {
+    "id": "bounce-rampage",
+    "name": "Bounce Rampage",
+    "item_category": "Mod",
+    "item_type": "Weapon",
+    "item_quality": null,
+    "description": "Bounce triggers 1 additional ricochet and gains +12% damage per jump.",
+    "weight": null,
+    "keyword": "Bounce",
+    "recommended_suffix": "<Bounce> or <Violent>"
+  },
+  {
+    "id": "deviation-expert",
+    "name": "Deviation Expert",
+    "item_category": "Mod",
+    "item_type": "Helmet",
+    "item_quality": null,
+    "description": "Reduces Deviation combat skill cooldown by 20% and restores energy on kill.",
+    "weight": null,
+    "keyword": null,
+    "recommended_suffix": "<Crescent Deviant Energy>"
+  },
+  {
+    "id": "frost-construct",
+    "name": "Frost Construct",
+    "item_category": "Mod",
+    "item_type": "Mask",
+    "item_quality": null,
+    "description": "When Frost Vortex detonates, creates ice shards dealing 120% frost burst.",
+    "weight": null,
+    "keyword": null,
+    "recommended_suffix": "<Frost Vortex>"
+  },
+  {
+    "id": "precision-bounce",
+    "name": "Precision Bounce",
+    "item_category": "Mod",
+    "item_type": "Mask",
+    "item_quality": null,
+    "description": "Critical hits with Bounce weapons guarantee the first ricochet is a critical hit.",
+    "weight": null,
+    "keyword": null,
+    "recommended_suffix": "<Bounce>"
+  },
+  {
+    "id": "rejuvenating",
+    "name": "Rejuvenating",
+    "item_category": "Mod",
+    "item_type": "Top",
+    "item_quality": null,
+    "description": "Using an activator grants 15% weapon damage and slow HP regeneration for 12s.",
+    "weight": null,
+    "keyword": null,
+    "recommended_suffix": "<Lunar Deviant Energy>"
+  },
+  {
+    "id": "reload-rampage",
+    "name": "Reload Rampage",
+    "item_category": "Mod",
+    "item_type": "Bottoms",
+    "item_quality": null,
+    "description": "Reloading after defeating an enemy increases fire rate and attack for 6s.",
+    "weight": null,
+    "keyword": null,
+    "recommended_suffix": "<Resonance Deviant Energy>"
+  },
+  {
+    "id": "crit-boost",
+    "name": "Crit Boost",
+    "item_category": "Mod",
+    "item_type": "Gloves",
+    "item_quality": null,
+    "description": "Flat +10% Crit Rate while health is above 70%.",
+    "weight": null,
+    "keyword": null,
+    "recommended_suffix": "<Resonance Deviant Energy>"
+  },
+  {
+    "id": "rush-hour",
+    "name": "Rush Hour",
+    "item_category": "Mod",
+    "item_type": "Shoes",
+    "item_quality": null,
+    "description": "Sprinting and dodging increases subsequent attack damage by 12%.",
+    "weight": null,
+    "keyword": null,
+    "recommended_suffix": "<Downstar Deviant Energy>"
+  }
+]

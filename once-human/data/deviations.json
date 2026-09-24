@@ -1,0 +1,30 @@
+[
+  {
+    "id": "voodoo-doll",
+    "name": "Voodoo Doll",
+    "combat_type": "Support / Debuff",
+    "signature_skill": "Binds to enemy weakspots and redirects team damage across all linked targets.",
+    "recommended_traits": "Fluffy Curse, Starfall Inversion, Moonlight Assault"
+  },
+  {
+    "id": "starfall-polar-jelly",
+    "name": "Starfall Polar Jelly",
+    "combat_type": "Frost / Area",
+    "signature_skill": "Freezes the zone, triggering ice storms that amplify Frost Vortex damage.",
+    "recommended_traits": "Starfall Inversion, Moonlight Assault"
+  },
+  {
+    "id": "mitsukos-emissary",
+    "name": "Mitsuko's Emissary",
+    "combat_type": "Precision / Buff",
+    "signature_skill": "Increases weakspot hit multiplier and boosts bullet damage for nearby allies.",
+    "recommended_traits": "Power Rewind 2, Glistening Blue - Weakspot Master, Moonlight Assault"
+  },
+  {
+    "id": "soul-summoner",
+    "name": "Soul Summoner",
+    "combat_type": "Burst Combat",
+    "signature_skill": "Summons ethereal clones that repeat the player's weapon projectile damage.",
+    "recommended_traits": "Power Rewind 2, Crack Shot, Moonlight Assault"
+  }
+]

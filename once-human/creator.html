@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Creator — Once Human</title>
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/once-human/oh-theme.css">
+  <style>
+    .form-group {
+      margin-bottom: 1.25rem;
+    }
+    .form-group label {
+      display: block;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--oh-muted);
+      margin-bottom: 0.35rem;
+    }
+    .form-control {
+      width: 100%;
+      background: var(--oh-panel-sub);
+      border: 1px solid var(--oh-border);
+      border-radius: 0;
+      padding: 0.6rem 0.8rem;
+      color: var(--oh-text);
+      font-family: inherit;
+      font-size: 0.9rem;
+    }
+    .form-control:focus {
+      outline: none;
+      border-color: var(--oh-accent);
+    }
+    .form-grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    @media (max-width: 640px) {
+      .form-grid-2 {
+        grid-template-columns: 1fr;
+      }
+    }
+    .cradle-checkboxes {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+    }
+    .cradle-label {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.85rem;
+      background: var(--oh-panel-sub);
+      padding: 0.4rem 0.6rem;
+      border-radius: 0;
+      border: 1px solid var(--oh-border);
+      cursor: pointer;
+    }
+    .cradle-label input {
+      accent-color: var(--oh-accent);
+    }
+  </style>
+</head>
+<body class="oh-app">
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="/" class="brand-logo">
+        <span class="logo-text">tebo<span class="dot">.</span>games</span>
+        <span class="sub-brand">Once Human</span>
+      </a>
+      <nav class="oh-nav">
+        <a href="/once-human/">Builds</a>
+        <a href="/once-human/tierlists.html">Tier Lists</a>
+        <a href="/once-human/creator.html" class="active">Calculator</a>
+        <div class="nav-dropdown">
+          <button class="nav-dropdown-toggle" type="button">Guides</button>
+          <div class="nav-dropdown-menu">
+            <div class="nav-mega">
+              <div>
+                <p class="nav-mega-title">Progression</p>
+                <a href="/once-human/catalog.html">Gear</a>
+                <a href="/once-human/resource.html?topic=Cradle%20Overrides">Cradle Overrides</a>
+                <a href="/once-human/resource.html?topic=Blueprints">Blueprints</a>
+                <a href="/once-human/resource.html?topic=Tech">Tech</a>
+              </div>
+              <div>
+                <p class="nav-mega-title">Classes</p>
+                <a href="/once-human/resource.html?topic=Beastmaster">Beastmaster</a>
+                <a href="/once-human/resource.html?topic=Chef">Chef</a>
+                <a href="/once-human/resource.html?topic=Gardener">Gardener</a>
+              </div>
+              <div>
+                <p class="nav-mega-title">Deviations</p>
+                <a href="/once-human/resource.html?topic=Fusion">Fusion</a>
+                <a href="/once-human/resource.html?topic=Securing">Securing</a>
+              </div>
+              <div>
+                <p class="nav-mega-title">Building</p>
+                <a href="/once-human/resource.html?topic=Production">Production</a>
+              </div>
+              <div>
+                <p class="nav-mega-title">Scenarios</p>
+                <a href="/once-human/resource.html?topic=Novice">Novice</a>
+                <a href="/once-human/resource.html?topic=Manibus">Manibus</a>
+                <a href="/once-human/resource.html?topic=Way%20of%20Winter">Way of Winter</a>
+                <a href="/once-human/resource.html?topic=Endless%20Dream">Endless Dream</a>
+                <a href="/once-human/resource.html?topic=Isles%20of%20Abyss">Isles of Abyss</a>
+              </div>
+              <div>
+                <p class="nav-mega-title">Visional Theme</p>
+                <a href="/once-human/resource.html?topic=Lunar%20Oracle">Lunar Oracle</a>
+                <a href="/once-human/resource.html?topic=Starfall%20Inversion">Starfall Inversion</a>
+                <a href="/once-human/resource.html?topic=Lunar%20Revelry">Lunar Revelry</a>
+                <a href="/once-human/resource.html?topic=Aberrant%20Progeny">Aberrant Progeny</a>
+                <a href="/once-human/resource.html?topic=Gravity%20Abyss">Gravity Abyss</a>
+                <a href="/once-human/resource.html?topic=Upcoming">Upcoming</a>
+              </div>
+              <div>
+                <p class="nav-mega-title">References</p>
+                <a href="/once-human/catalog.html">Items Database</a>
+                <a href="/once-human/resource.html?topic=Mod%20Suffixes">Mod Suffixes</a>
+                <a href="/once-human/resource.html?topic=Deviation%20Traits">Deviation Traits</a>
+                <a href="/once-human/resource.html?topic=Production">Production</a>
+                <a href="/once-human/resource.html?topic=Power%20Generation">Power Generation</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <a href="/once-human/admin/">Admin</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container build-detail">
+    <div class="build-detail-header">
+      <h1 style="font-size: 2.2rem; margin-bottom: 0.5rem;">Loadout Creator & Damage Estimator</h1>
+      <p style="color: var(--oh-muted);">
+        Select gear components from dropdowns to simulate damage and generate a shareable theorycraft URL.
+      </p>
+    </div>
+
+    <div class="loadout-columns">
+      <!-- Creator Form -->
+      <form id="creator-form" class="loadout-main" onsubmit="event.preventDefault();">
+        <!-- Build Meta -->
+        <section class="loadout-section">
+          <div class="section-head">
+            <span>1. Build Identity</span>
+          </div>
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label for="build-title">Build Name</label>
+              <input type="text" id="build-title" class="form-control" value="Custom Theorycraft Setup">
+            </div>
+            <div class="form-group">
+              <label for="build-objective">Objective</label>
+              <select id="build-objective" class="form-control">
+                <option value="General">General</option>
+                <option value="Silos">Silos</option>
+                <option value="Monoliths">Monoliths</option>
+                <option value="Visional">Visional</option>
+              </select>
+            </div>
+          </div>
+        </section>
+
+        <!-- Weapons -->
+        <section class="loadout-section">
+          <div class="section-head">
+            <span>2. Weapon Slots</span>
+          </div>
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label for="primary-weapon">Primary Weapon</label>
+              <select id="primary-weapon" class="form-control"></select>
+            </div>
+            <div class="form-group">
+              <label for="primary-mod">Weapon Mod</label>
+              <select id="primary-mod" class="form-control"></select>
+            </div>
+          </div>
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label for="secondary-weapon">Secondary Weapon</label>
+              <select id="secondary-weapon" class="form-control"></select>
+            </div>
+            <div class="form-group">
+              <label for="secondary-mod">Secondary Mod</label>
+              <select id="secondary-mod" class="form-control"></select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="calibration-level">Calibration Bonus (+ATK %)</label>
+            <select id="calibration-level" class="form-control">
+              <option value="0">+0 (Base)</option>
+              <option value="0.10">+5 Calibration (+10%)</option>
+              <option value="0.20" selected>+10 Standard Calibration (+20%)</option>
+              <option value="0.30">+10 God Roll Calibration (+30%)</option>
+            </select>
+          </div>
+        </section>
+
+        <!-- Armor & Mods -->
+        <section class="loadout-section">
+          <div class="section-head">
+            <span>3. Armor Setup & Gear Mods</span>
+          </div>
+          <div class="form-group">
+            <label for="armor-summary">Armor Set Combination</label>
+            <input type="text" id="armor-summary" class="form-control" value="3 Savior, 2 Lone Wolf, 1 Exotic">
+          </div>
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label for="helmet-mod">Helmet Mod</label>
+              <select id="helmet-mod" class="form-control"></select>
+            </div>
+            <div class="form-group">
+              <label for="mask-mod">Mask Mod</label>
+              <select id="mask-mod" class="form-control"></select>
+            </div>
+          </div>
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label for="top-mod">Top Mod</label>
+              <select id="top-mod" class="form-control"></select>
+            </div>
+            <div class="form-group">
+              <label for="pants-mod">Bottoms Mod</label>
+              <select id="pants-mod" class="form-control"></select>
+            </div>
+          </div>
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label for="gloves-mod">Gloves Mod</label>
+              <select id="gloves-mod" class="form-control"></select>
+            </div>
+            <div class="form-group">
+              <label for="shoes-mod">Shoes Mod</label>
+              <select id="shoes-mod" class="form-control"></select>
+            </div>
+          </div>
+        </section>
+
+        <!-- Cradle & Deviation -->
+        <section class="loadout-section">
+          <div class="section-head">
+            <span>4. Cradle Overrides & Deviation</span>
+          </div>
+          <div class="form-group">
+            <label for="deviation">Primary Combat Deviation</label>
+            <select id="deviation" class="form-control"></select>
+          </div>
+
+          <div class="form-group">
+            <label>Cradle Overrides (Select active perks)</label>
+            <div class="cradle-checkboxes" id="cradle-list"></div>
+          </div>
+
+          <div class="form-group">
+            <label for="notes">Notes / Usage Guide</label>
+            <textarea id="notes" class="form-control" rows="3" placeholder="Rotation tips, food buffs, hide crafting recommendations..."></textarea>
+          </div>
+        </section>
+      </form>
+
+      <!-- Calculator Sidebar -->
+      <aside>
+        <div class="calc-summary-card">
+          <h3 style="font-size:1.15rem; margin-bottom:1rem; border-bottom:1px solid var(--oh-border); padding-bottom:0.5rem;">Damage Calculator</h3>
+
+          <div class="stat-row">
+            <span style="color:var(--oh-muted)">Primary ATK (Calibrated)</span>
+            <span id="stat-atk">0</span>
+          </div>
+          <div class="stat-row">
+            <span style="color:var(--oh-muted)">Fire Rate (RPM)</span>
+            <span id="stat-rpm">0</span>
+          </div>
+          <div class="stat-row">
+            <span style="color:var(--oh-muted)">Magazine Capacity</span>
+            <span id="stat-mag">0</span>
+          </div>
+          <div class="stat-row">
+            <span style="color:var(--oh-muted)">Effective Crit Rate</span>
+            <span id="stat-crit-rate">0%</span>
+          </div>
+          <div class="stat-row">
+            <span style="color:var(--oh-muted)">Effective Crit Multiplier</span>
+            <span id="stat-crit-dmg">+0%</span>
+          </div>
+          <div class="stat-row">
+            <span style="color:var(--oh-muted)">Estimated Raw Shot</span>
+            <span id="stat-shot-dmg">0</span>
+          </div>
+
+          <div class="stat-row total">
+            <span>Est. Burst DPS</span>
+            <span id="stat-burst-dps">0</span>
+          </div>
+          <div class="stat-row" style="font-size:0.95rem; font-weight:600; color:var(--oh-gold);">
+            <span>Est. Sustained DPS</span>
+            <span id="stat-sustained-dps">0</span>
+          </div>
+
+          <div style="margin-top: 1.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
+            <button class="btn primary" onclick="copyShareUrl()">🔗 Copy Shareable Link</button>
+            <button class="btn ghost" onclick="exportJsonDraft()">💾 Export JSON for Admin</button>
+          </div>
+
+          <div class="disclaimer-box">
+            Formula uses: Shot = ATK * (1 + Calibration) * (1 + CritChance * CritMultiplier). Sustained factor accounts for reload cycles using magazine size.
+          </div>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="site-footer container">
+    <p>tebo.games • Once Human</p>
+  </footer>
+
+  <script>
+    let globalWeapons = [];
+    let globalMods = [];
+    let globalDeviations = [];
+    let globalBuilds = [];
+
+    const defaultCradles = [
+      "Light Weapon Mastery",
+      "Heavy Weapon Mastery",
+      "Precision Weapon Mastery",
+      "Tactical Combo",
+      "Status Enhancement",
+      "Deviant Energy Defense",
+      "Energy Surge",
+      "Extreme Freezing",
+      "Blazing Detonation",
+      "Bounce Rampage",
+      "Bounty Hunter",
+      "Transient Impact"
+    ];
+
+    async function init() {
+      const [weapons, mods, devs, builds] = await Promise.all([
+        fetch('/once-human/data/weapons.json').then(r => r.json()),
+        fetch('/once-human/data/mods.json').then(r => r.json()),
+        fetch('/once-human/data/deviations.json').then(r => r.json()),
+        fetch('/once-human/data/builds.json').then(r => r.json())
+      ]);
+
+      globalWeapons = weapons;
+      globalMods = mods;
+      globalDeviations = devs;
+      globalBuilds = builds;
+
+      populateDropdowns();
+      renderCradleOptions();
+
+      // Check URL clone param or hash
+      const params = new URLSearchParams(window.location.search);
+      const cloneId = params.get('clone');
+      if (cloneId) {
+        loadFromBuildId(cloneId);
+      } else if (window.location.hash.length > 1) {
+        loadFromHash();
+      }
+
+      document.querySelectorAll('#creator-form select, #creator-form input, #creator-form textarea').forEach(el => {
+        el.addEventListener('change', calculateDPS);
+        el.addEventListener('input', calculateDPS);
+      });
+
+      calculateDPS();
+    }
+
+    function populateDropdowns() {
+      const pWep = document.getElementById('primary-weapon');
+      const sWep = document.getElementById('secondary-weapon');
+      pWep.innerHTML = globalWeapons.map(w => `<option value="${w.id}">${w.name} (${w.item_type || ''})</option>`).join('');
+      sWep.innerHTML = globalWeapons.map(w => `<option value="${w.id}">${w.name}</option>`).join('');
+      if (globalWeapons[2]) sWep.value = globalWeapons[2].id;
+
+      const pMod = document.getElementById('primary-mod');
+      const sMod = document.getElementById('secondary-mod');
+      const wepMods = globalMods.filter(m => m.item_type === 'Weapon');
+      pMod.innerHTML = wepMods.map(m => `<option value="${m.id}">${m.name}${m.keyword ? ' (' + m.keyword + ')' : ''}</option>`).join('');
+      sMod.innerHTML = wepMods.map(m => `<option value="${m.id}">${m.name}</option>`).join('');
+      if (wepMods[1]) sMod.value = wepMods[1].id;
+
+      populateSlotMod('helmet-mod', 'Helmet');
+      populateSlotMod('mask-mod', 'Mask');
+      populateSlotMod('top-mod', 'Top');
+      populateSlotMod('pants-mod', 'Bottoms');
+      populateSlotMod('gloves-mod', 'Gloves');
+      populateSlotMod('shoes-mod', 'Shoes');
+
+      const devEl = document.getElementById('deviation');
+      devEl.innerHTML = globalDeviations.map(d => `<option value="${d.id}">${d.name} (${d.combat_type})</option>`).join('');
+    }
+
+    function populateSlotMod(selectId, category) {
+      const el = document.getElementById(selectId);
+      const matches = globalMods.filter(m => m.item_type === category);
+      if (matches.length) {
+        el.innerHTML = matches.map(m => `<option value="${m.id}">${m.name}</option>`).join('');
+      } else {
+        el.innerHTML = `<option value="none">Standard ${category} Mod</option>`;
+      }
+    }
+
+    function renderCradleOptions() {
+      const root = document.getElementById('cradle-list');
+      root.innerHTML = defaultCradles.map((c, i) => `
+        <label class="cradle-label">
+          <input type="checkbox" name="cradle" value="${c}" ${i < 4 ? 'checked' : ''}>
+          <span>${c}</span>
+        </label>
+      `).join('');
+    }
+
+    function calculateDPS() {
+      const pWepId = document.getElementById('primary-weapon').value;
+      const wep = globalWeapons.find(w => w.id === pWepId) || globalWeapons[0];
+      if (!wep) return;
+
+      const calibMultiplier = parseFloat(document.getElementById('calibration-level').value) || 0;
+      const baseAtk = wep.attack || 100;
+      const calibAtk = Math.round(baseAtk * (1 + calibMultiplier));
+      const rpm = wep.fire_rate || 500;
+      const mag = wep.magazine || 30;
+      const rps = rpm / 60;
+
+      // Base crit stats
+      let critRate = wep.crit_rate || 0.08;
+      let critDmg = wep.crit_dmg || 0.35;
+
+      // Bonus if gloves mod is crit boost
+      const glovesModId = document.getElementById('gloves-mod').value;
+      if (glovesModId === 'crit-boost') {
+        critRate += 0.10;
+      }
+
+      const effectiveCritMult = 1 + (critRate * critDmg);
+      const avgShotDmg = Math.round(calibAtk * effectiveCritMult);
+      const burstDps = Math.round(avgShotDmg * rps);
+
+      // Sustained factor accounts for reload cycle
+      const reloadTime = wep.reload_time > 0 ? wep.reload_time : 2.5;
+      const magDumpTime = mag / rps;
+      const sustainedFactor = magDumpTime / (magDumpTime + (reloadTime > 0.5 ? reloadTime : 2.0));
+      const sustainedDps = Math.round(burstDps * (sustainedFactor || 0.75));
+
+      document.getElementById('stat-atk').textContent = `${calibAtk} (Base: ${baseAtk})`;
+      document.getElementById('stat-rpm').textContent = rpm;
+      document.getElementById('stat-mag').textContent = mag;
+      document.getElementById('stat-crit-rate').textContent = `${Math.round(critRate * 100)}%`;
+      document.getElementById('stat-crit-dmg').textContent = `+${Math.round(critDmg * 100)}%`;
+      document.getElementById('stat-shot-dmg').textContent = avgShotDmg;
+      document.getElementById('stat-burst-dps').textContent = `~${burstDps.toLocaleString()}`;
+      document.getElementById('stat-sustained-dps').textContent = `~${sustainedDps.toLocaleString()}`;
+    }
+
+    function loadFromBuildId(id) {
+      const b = globalBuilds.find(item => item.id === id);
+      if (!b) return;
+      document.getElementById('build-title').value = b.title;
+      document.getElementById('build-objective').value = b.objective;
+      document.getElementById('primary-weapon').value = b.primary_weapon;
+      document.getElementById('primary-mod').value = b.primary_mod;
+      document.getElementById('secondary-weapon').value = b.secondary_weapon;
+      document.getElementById('secondary-mod').value = b.secondary_mod;
+      document.getElementById('armor-summary').value = b.armor_summary;
+      if (b.helmet_mod) document.getElementById('helmet-mod').value = b.helmet_mod;
+      if (b.mask_mod) document.getElementById('mask-mod').value = b.mask_mod;
+      if (b.top_mod) document.getElementById('top-mod').value = b.top_mod;
+      if (b.bottoms_mod) document.getElementById('pants-mod').value = b.bottoms_mod;
+      if (b.gloves_mod) document.getElementById('gloves-mod').value = b.gloves_mod;
+      if (b.shoes_mod) document.getElementById('shoes-mod').value = b.shoes_mod;
+      if (b.deviation) document.getElementById('deviation').value = b.deviation;
+      if (b.notes) document.getElementById('notes').value = b.notes;
+
+      // Select cradle
+      if (b.cradle_overrides) {
+        document.querySelectorAll('input[name="cradle"]').forEach(cb => {
+          cb.checked = b.cradle_overrides.includes(cb.value);
+        });
+      }
+    }
+
+    function copyShareUrl() {
+      const state = {
+        title: document.getElementById('build-title').value,
+        pw: document.getElementById('primary-weapon').value,
+        pm: document.getElementById('primary-mod').value,
+        sw: document.getElementById('secondary-weapon').value,
+        sm: document.getElementById('secondary-mod').value,
+        ar: document.getElementById('armor-summary').value,
+        dev: document.getElementById('deviation').value
+      };
+      const hash = encodeURIComponent(JSON.stringify(state));
+      const url = `${window.location.origin}${window.location.pathname}#${hash}`;
+      navigator.clipboard.writeText(url);
+      alert('Share URL copied to clipboard!');
+    }
+
+    function loadFromHash() {
+      try {
+        const raw = decodeURIComponent(window.location.hash.substring(1));
+        const s = JSON.parse(raw);
+        if (s.title) document.getElementById('build-title').value = s.title;
+        if (s.pw) document.getElementById('primary-weapon').value = s.pw;
+        if (s.pm) document.getElementById('primary-mod').value = s.pm;
+        if (s.sw) document.getElementById('secondary-weapon').value = s.sw;
+        if (s.sm) document.getElementById('secondary-mod').value = s.sm;
+        if (s.ar) document.getElementById('armor-summary').value = s.ar;
+        if (s.dev) document.getElementById('deviation').value = s.dev;
+      } catch (e) {
+        console.warn('Could not parse hash config', e);
+      }
+    }
+
+    function exportJsonDraft() {
+      const cradles = Array.from(document.querySelectorAll('input[name="cradle"]:checked')).map(c => c.value);
+      const draft = {
+        id: document.getElementById('build-title').value.toLowerCase().replace(/[^a-z0-9]+/g, '-'),
+        title: document.getElementById('build-title').value,
+        objective: document.getElementById('build-objective').value,
+        vision: null,
+        scenario: null,
+        primary_weapon: document.getElementById('primary-weapon').value,
+        primary_mod: document.getElementById('primary-mod').value,
+        primary_calibration: document.getElementById('calibration-level').selectedOptions[0].text,
+        secondary_weapon: document.getElementById('secondary-weapon').value,
+        secondary_mod: document.getElementById('secondary-mod').value,
+        melee_weapon: "kukri",
+        armor_summary: document.getElementById('armor-summary').value,
+        helmet_mod: document.getElementById('helmet-mod').value,
+        mask_mod: document.getElementById('mask-mod').value,
+        top_mod: document.getElementById('top-mod').value,
+        bottoms_mod: document.getElementById('pants-mod').value,
+        gloves_mod: document.getElementById('gloves-mod').value,
+        shoes_mod: document.getElementById('shoes-mod').value,
+        cradle_overrides: cradles,
+        deviation: document.getElementById('deviation').value,
+        notes: document.getElementById('notes').value
+      };
+      prompt('Copy this JSON and paste it into /admin/ or builds.json:', JSON.stringify(draft, null, 2));
+    }
+
+    window.addEventListener('DOMContentLoaded', init);
+  </script>
+</body>
+</html>
